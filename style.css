@@ -14,4 +14,16 @@ h3
 p
 {
     color:black;
+    font-size:18px
+}
+body
+{
+    background-color:papayawhip;
+}
+ul{
+    font-size:18px
+}
+code
+{
+    font-size:15px;
 }
