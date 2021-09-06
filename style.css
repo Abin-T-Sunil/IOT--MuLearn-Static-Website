@@ -27,3 +27,13 @@ code
 {
     font-size:15px;
 }
+.para1{
+    padding-left: 30px;
+}
+.code{
+    width: 160px;
+  height: 200px;
+  padding: 20px;
+  border: 1px solid red;
+  background:white;
+}
