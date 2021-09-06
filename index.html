@@ -15,7 +15,7 @@
         <p>This page is used to track the improvements in my workshop conducted by GTech Mulearn in associated with FoxLab</p>
         <h3><strong><u>Experiment List</u></strong></h3>
 
-        <table border="1px">
+        <table border="2px">
             <thead>
                 <tr>
                     <th>Exp No</th>
@@ -34,6 +34,42 @@
                 <tr>
                     <td>3</td>
                     <td>LED Chasing</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Button controlled LED</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Buzzer</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>RGB LED</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>LDR Light sensor</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Flame sensor</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Temperature sensor</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>IR Remote control</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Potentiometer Analog value reading</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>7 Segment display</td>
                 </tr>
             </tbody>
         </table>
@@ -149,9 +185,632 @@
         <video width="500px" height="300px" controls loop>
             <source src="iot_images_and_videos/led chasing video.mp4">
         </video>
+        
+        
+
+        <h2><strong><u> Experiment:4</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>220 ohm resistor x 1</li>
+            <li>10k ohm resistor x 1</li>
+            <li>LED(Any colour) x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            <li>Button switch x 1</li>
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int ledpin=11;// initialize pin 11<br>
+             int inpin=7;// initialize pin 7<br>
+            int val;// define val<br>
+            void setup()<br>
+            {<br>
+           pinMode(ledpin,OUTPUT);// set LED pin as “output”<br>
+           pinMode(inpin,INPUT);// set button pin as “input”<br>
+            }<br>
+           void loop()<br>
+           {<br>
+           val=digitalRead(inpin);// read the level value of pin 7 and assign if to val<br>
+           if(val==LOW)// check if the button is pressed, if yes, turn on the LED<br>
+           { digitalWrite(ledpin,LOW);}<br>
+           else<br>
+           { digitalWrite(ledpin,HIGH);}<br>
+           }<br>
+        </code>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/button controlled led.mp4">
+        </video>
+
+
+        <h2><strong><u> Experiment:5</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>Buzzer x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int buzzer=8;// initialize digital IO pin that controls the buzzer<br>
+            void setup() <br>
+            { <br>
+            pinMode(buzzer,OUTPUT);// set pin mode as “output”<br>
+            } <br>
+            void loop() <br>
+           {<br>
+           digitalWrite(buzzer, HIGH); // produce sound<br>
+           }<br>
+        </code>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/buzzer.mp4">
+        </video>
 
 
 
+        <h2><strong><u> Experiment:6</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>RGB LED x 1</li>
+            <li>Resistors</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int redpin = 11; //select the pin for the red LED<br>
+            int bluepin =10; // select the pin for the blue LED<br>
+            int greenpin =9;// select the pin for the green LED<br>
+            int val;<br>
+            void setup() {<br>
+             pinMode(redpin, OUTPUT);<br>
+             pinMode(bluepin, OUTPUT);<br>
+             pinMode(greenpin, OUTPUT);<br>
+             Serial.begin(9600);<br>
+            }<br>
+            void loop() <br>
+           {<br>
+           for(val=255; val>0; val--)<br>
+           {<br>
+           analogWrite(11, val);<br>
+           analogWrite(10, 255-val);<br>
+           analogWrite(9, 128-val);<br>
+           delay(1); <br>
+           }<br>
+           for(val=0; val<255; val++) <br>
+           {<br>
+          analogWrite(11, val);<br>
+         analogWrite(10, 255-val);<br>
+          analogWrite(9, 128-val);<br>
+         delay(1); <br>
+         }
+        Serial.println(val, DEC);<br>
+         }
+        </code>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/RGB LED.mp4">
+        </video>
+  
 
+        <h2><strong><u> Experiment:7</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>Red M5 LED x 1</li>
+            <li>10k ohm Resistors</li>
+            <li>220 ohm resistor</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            <li>Photoresistor x 1</li>
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            const int ldr = 7;<br>
+            const int led = 13;<br>
+            
+            void setup() {<br>
+              pinMode(ldr,INPUT);//define pin as input sensor<br>
+              pinMode(led,OUTPUT);//define pin as output sensor<br>
+            
+            
+            }<br>
+            
+            void loop() {<br>
+            int y =digitalRead(ldr);//read the sensor<br>
+            if (y==1){<br>
+              digitalWrite(led,HIGH);//turn on led<br>
+            }else{digitalWrite(led,LOW);//turn off led<br>
+            }<br>
+            delay(500);<br>
+            
+            }
+        </code>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/LDR.mp4">
+        </video>
+
+
+        <h2><strong><u> Experiment:8</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>Flame sensor x 1</li>
+            <li>10k ohm Resistor x 1</li>
+            <li>Buzzer x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int flame=0;// select analog pin 0 for the sensor<br>
+            int Beep=9;// select digital pin 9 for the buzzer<br>
+            int val=0;// initialize variable<br>
+            void setup() <br>
+            {<br>
+             pinMode(Beep,OUTPUT);// set LED pin as “output”<br>
+             pinMode(flame,INPUT);// set buzzer pin as “input”<br>
+             Serial.begin(9600);// set baud rate at “9600”<br>
+            } <br>
+            void loop()<br> 
+            { <br>
+             val=analogRead(flame);// read the analog value of the sensor <br>
+             Serial.println(val);// output and display the analog value<br>
+             if(val>=600)// when the analog value is larger than 600, the buzzer will buzz<br>
+            {  <br>
+            digitalWrite(Beep,HIGH);<br> 
+            }else <br>
+            {  <br>
+            digitalWrite(Beep,LOW);<br> 
+            }<br>
+            delay(500); <br>
+           }<br>
+        </code>
+        <h3><strong>Problems faced</strong></h3>
+        <p>I tried this experiments and watched others work.But I am not able to solve the problem</p>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/">
+        </video>
+
+        <h2><strong><u> Experiment:9</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>LM35 x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int potPin = 0; // initialize analog pin 0 for LM35 temperature sensor<br>
+            void setup()<br>
+            {<br>
+            Serial.begin(9600);// set baud rate at”9600”<br>
+            }<br>
+            void loop()<br>
+            {<br>
+            int val;// define variable<br>
+            int dat;// define variable<br>
+            val=analogRead(0);// read the analog value of the sensor and assign it to val<br>
+            dat=(125*val)>>8;// temperature calculation formula<br>
+            Serial.print("Tep");// output and display characters beginning with Tep<br>
+            Serial.print(dat);// output and display value of dat<br>
+            Serial.println("C");// display “C” characters<br>
+            delay(500);// wait for 0.5 second<br>
+            }<br>
+        </code>
+        
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/Temperature sensor.mp4">
+        </video>
+
+
+        <h2><strong><u> Experiment:10</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>Infrared receiver x 1</li>
+            <li>220 ohm Resistor x 6</li>
+            <li>Infrared remote controller x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            #include <IRremote.h><br>
+                int RECV_PIN = 11;<br>
+                int LED1 = 2;<br>
+                int LED2 = 3;<br>
+                int LED3 = 4;<br>
+                int LED4 = 5;<br>
+                int LED5 = 6;<br>
+                int LED6 = 7;<br>
+                long on1  = 0x00FF6897;<br>
+                long off1 = 0x00FF9867;<br>
+                long on2 = 0x00FFB04F;<br>
+                long off2 = 0x00FF30CF;<br>
+                long on3 = 0x00FF18E7;<br>
+                long off3 = 0x00FF7A85;<br>
+                long on4 = 0x00FF10EF;<br>
+                long off4 = 0x00FF38C7;<br>
+                long on5 = 0x00FF5AA5;<br>
+                long off5 = 0x00FF42BD;<br>
+                long on6 = 0x00FF4AB5;<br>
+                long off6 = 0x00FF52AD;<br>
+                IRrecv irrecv(RECV_PIN);<br>
+                decode_results results;<br>
+                // Dumps out the decode_results structure.<br>
+                // Call this after IRrecv::decode()<br>
+                // void * to work around compiler issue<br>
+                //void dump(void *v) {<br>
+                //  decode_results *results = (decode_results *)v<br>
+                void dump(decode_results *results) {<br>
+                  int count = results->rawlen;<br>
+                  if (results->decode_type == UNKNOWN) <br>
+                    {<br>
+                     Serial.println("Could not decode message");<br>
+                    } <br>
+                  else <br>
+                   {<br>
+                    if (results->decode_type == NEC) <br>
+                      {<br>
+                       Serial.print("Decoded NEC: ");<br>
+                      } <br>
+                    else if (results->decode_type == SONY)<br> 
+                      {<br>
+                       Serial.print("Decoded SONY: ");<br>
+                      } <br>
+                    else if (results->decode_type == RC5) <br>
+                      {<br>
+                       Serial.print("Decoded RC5: ");<br>
+                      } <br>
+                    else if (results->decode_type == RC6)<br> 
+                      {<br>
+                       Serial.print("Decoded RC6: ");<br>
+                      }<br>
+                     Serial.print(results->value, HEX);<br>
+                     Serial.print(" (");<br>
+                     Serial.print(results->bits, DEC);<br>
+                     Serial.println(" bits)");<br>
+                   }<br>
+                     Serial.print("Raw (");<br>
+                     Serial.print(count, DEC);<br>
+                     Serial.print("): ");<br>
+                 for (int i = 0; i < count; i++)<br> 
+                     {<br>
+                      if ((i % 2) >= 1) {<br>
+                      Serial.print(results->rawbuf[i]*USECPERTICK, DEC);<br>
+                     } <br>
+                    else  <br>
+                     {<br>
+                      Serial.print(-(int)results->rawbuf[i]*USECPERTICK, DEC);<br>
+                     }<br>
+                    Serial.print(" ");<br>
+                     }<br>
+                      Serial.println("");<br>
+                     }<br>
+                void setup()<br>
+                 {<br>
+                  pinMode(RECV_PIN, INPUT);<br>   
+                  pinMode(LED1, OUTPUT);<br>
+                  pinMode(LED2, OUTPUT);<br>
+                  pinMode(LED3, OUTPUT);<br>
+                  pinMode(LED4, OUTPUT);<br>
+                  pinMode(LED5, OUTPUT);<br>
+                  pinMode(LED6, OUTPUT);  <br>
+                  pinMode(13, OUTPUT);<br>
+                  Serial.begin(9600);<br>
+                   irrecv.enableIRIn(); // Start the receiver<br>
+                 }<br>
+                int on =0;<br>
+                unsigned long last = millis();<br>
+                void loop() <br>
+                {<br>
+                  if (irrecv.decode(&results))<br> 
+                   {<br>
+                    // If it's been at least 1/4 second since the last<br>
+                    // IR received, toggle the relay<br>
+                    if (millis() - last > 250) <br>
+                      {<br>
+                         on =  ! on;<br>
+                //        digitalWrite(8, on ? HIGH : LOW);<br>
+                        digitalWrite(13, on ? HIGH: LOW);<br>
+                       dump(&results);<br>
+                      }<br>
+                    if (results.value == on1 )<br>
+                       digitalWrite(LED1, HIGH);<br>
+                    if (results.value == off1 )<br>
+                       digitalWrite(LED1, LOW); <br>
+                    if (results.value == on2 )<br>
+                       digitalWrite(LED2, HIGH);<br>
+                    if (results.value == off2 )<br>
+                       digitalWrite(LED2, LOW); <br>
+                    if (results.value == on3 )<br>
+                       digitalWrite(LED3, HIGH);<br>
+                    if (results.value == off3 )<br>
+                       digitalWrite(LED3, LOW);<br>
+                    if (results.value == on4 )<br>
+                       digitalWrite(LED4, HIGH);<br>
+                    if (results.value == off4 )<br>
+                       digitalWrite(LED4, LOW); <br>
+                    if (results.value == on5 )<br>
+                       digitalWrite(LED5, HIGH);<br>
+                    if (results.value == off5 )<br>
+                       digitalWrite(LED5, LOW); <br>
+                    if (results.value == on6 )<br>
+                       digitalWrite(LED6, HIGH);<br>
+                    if (results.value == off6 )<br>
+                       digitalWrite(LED6, LOW);    <br>    
+                    last = millis();      <br>
+                irrecv.resume(); // Receive the next value<br>
+                  }<br>
+                }<br>
+        </code>
+        <h3><strong>Problems faced</strong></h3>
+        <p>I tried this experiment several times.But i failed to solve the problem.<br>My first issue was due to some spacing between the codes(stray/302/ willbe shown while compilation).<br>My second problem was due to the decodation of IR signal.But unfortunatily I cannot solve that problem.</p>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/">
+        </video>
+
+
+        <h2><strong><u> Experiment:11</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>10k potentiometer x 1</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            int potpin=0;// initialize analog pin 0<br>
+            int ledpin=13;// initialize digital pin 13<br>
+            int val=0;// define val, assign initial value 0<br>
+            void setup()<br>
+            {<br>
+            pinMode(ledpin,OUTPUT);// set digital pin as “output”<br>
+            Serial.begin(9600);// set baud rate at 9600<br>
+            }<br>
+            void loop()<br>
+            {<br>
+           digitalWrite(ledpin,HIGH);// turn on the LED on pin 13<br>
+           delay(50);// wait for 0.05 second<br>
+           digitalWrite(ledpin,LOW);// turn off the LED on pin 13<br>
+           delay(50);// wait for 0.05 second<br>
+           val=analogRead(potpin);// read the analog value of analog pin 0, and assign it to val <br>
+           Serial.println(val);// display val’s value<br>
+           }<br>
+        </code>
+        
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/">
+        </video>
+
+
+        <h2><strong><u> Experiment:12</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>1-digit LED segment display x 1</li>
+            <li>220 ohm resistor x 8</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong></stong></h3>
+        <code>
+            
+        </code>
+        <h3><strong>Problems faced</strong></h3>
+        <p>I didn't have the segmet display to do the experiment</p>
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/">
+        </video>
+
+        <h2><strong><u> ASSIGNMENT 1:Automatic night lamp</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>LDR x 1</li>
+            <li>LED</li>
+            <li>220 ohm resistor X 3</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            const int ldr = 7;<br>
+            const int led = 13;<br>
+            const int led1 = 12;<br>
+            const int led2 = 11;<br>
+
+            void setup() {<br>
+            pinMode(ldr,INPUT);//define pin as input sensor<br>
+            pinMode(led,OUTPUT);//define pin as output sensor<br>
+            pinMode(led1,OUTPUT);<br>
+            pinMode(led2 ,OUTPUT);<br>
+            
+            }<br>
+
+            void loop() {<br>
+            int y =digitalRead(ldr);//read the sensor<br>
+            if (y==1){<br>
+            digitalWrite(led,HIGH);//turn on led<br>
+            digitalWrite(led1,HIGH);<br>
+            digitalWrite(led2,HIGH);<br>
+  
+            }else{digitalWrite(led,LOW);//turn off led<br>
+            digitalWrite(led1,LOW);<br>
+            digitalWrite(led2,LOW);<br>
+            }<br>
+           delay(500);<br>
+
+           }<br>
+        </code>
+        
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/Automatic led light.mp4">
+        </video>
+
+        <h2><strong><u> ASSIGNMENT 2:Digital dice using 6 LEDs and push button</u></strong></h2>
+        <h3><strong>Hardware needed</strong></h3>
+        <ul>
+            <li>Arduino uno board x 1</li>
+            <li>USB cable x 1</li>
+            <li>Push button x 1</li>
+            <li>LED x 6</li>
+            <li>220 ohm resistor X 7</li>
+            <li>Breadboard x 1</li>
+            <li>Jumper wires</li>
+            
+            
+        </ul>
+        <h3><stong>Code</stong></h3>
+        <code>
+            #define DEBUG 0<br>
+
+            // 6 consecutive digital pins for the LEDs<br>
+            int first = 2;<br>
+            int second = 3;<br>
+            int third = 4;<br>
+            int fourth = 5;<br>
+            int fifth = 6;<br>
+            int sixth = 7;<br>
+            
+            // pin for the button switch<br>
+            int button = 12;<br>
+            // value to check state of button switch<br>
+            int pressed = 0;<br>
+            
+            void setup() {<br>
+              // set all LED pins to OUTPUT<br>
+              for (int i=first; i<=sixth; i++) {<br>
+                pinMode(i, OUTPUT);<br>
+              }<br>
+              // set buttin pin to INPUT<br>
+              pinMode(button, INPUT);<br>
+              
+              // initialize random seed by noise from analog pin 0 (should be unconnected)<br>
+              randomSeed(analogRead(0));<br>
+            
+              // if we're debugging, connect to serial <br>
+              #ifdef DEBUG<br>
+                Serial.begin(9600);<br>
+              #endif<br>
+              
+            }<br>
+            
+            void buildUpTension() {<br>
+              // light LEDs from left to right and back to build up tension<br>
+              // while waiting for the dice to be thrown<br>
+              // left to right<br>
+              for (int i=first; i<=sixth; i++) {<br>
+                if (i!=first) {<br>
+                  digitalWrite(i-1, LOW);<br>
+                }<br>
+                digitalWrite(i, HIGH);<br>
+                delay(100);<br>
+              }<br>
+              // right to left<br>
+              for (int i=sixth; i>=first; i--) {<br>
+                if (i!=sixth) {<br>
+                  digitalWrite(i+1, LOW);<br>
+                }<br>
+                digitalWrite(i, HIGH);<br>
+                delay(100);<br>
+              }<br>
+            }<br>
+            
+            void showNumber(int number) {<br>
+              digitalWrite(first, HIGH);<br>
+              if (number >= 2) {<br>
+                digitalWrite(second, HIGH);<br>
+              }<br>
+              if (number >= 3) {<br>
+                digitalWrite(third, HIGH); <br>   
+              }<br>
+              if (number >= 4) {<br>
+                digitalWrite(fourth, HIGH);  <br>  
+              }<br>
+              if (number >= 5) {<br>
+                digitalWrite(fifth, HIGH);<br>    
+              }<br>
+              if (number == 6) {<br>
+                digitalWrite(sixth, HIGH);<br>    
+              }<br>
+            }<br>
+            
+            int throwDice() {<br>
+              // get a random number in the range [1,6]<br>
+              int randNumber = random(1,7);<br>
+              
+              #ifdef DEBUG<br>
+                Serial.println(randNumber);<br>
+              #endif<br>
+              
+              return randNumber;<br>
+            }<br>
+            
+            void setAllLEDs(int value) {<br>
+              for (int i=first; i<=sixth; i++) {<br>
+                digitalWrite(i, value);<br>
+              }<br>
+            }<br>
+            
+            void loop() {<br>
+              // if button is pressed - throw the dice<br>
+              pressed = digitalRead(button);<br>
+            
+              if (pressed == HIGH) {<br>
+                // remove previous number<br>
+                setAllLEDs(LOW);<br>
+                
+                buildUpTension();<br>
+                int thrownNumber = throwDice();<br>
+                showNumber(thrownNumber);<br>
+              } <br>
+            
+            }<br>
+        </code>
+        
+        <h3><strong>Video</strong></h3>
+        <video width="500px" height="300px" controls loop>
+            <source src="iot_images_and_videos/Dice led.mp4">
+        </video>
     </body>
 </html>
